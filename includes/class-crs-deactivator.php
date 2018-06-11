@@ -3,11 +3,11 @@
 /**
  * Fired during plugin deactivation
  *
- * @link       http://example.com
+ * @link       http://deninichi.com
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    CRS
+ * @subpackage CRS/includes
  */
 
 /**
@@ -16,13 +16,13 @@
  * This class defines all code necessary to run during the plugin's deactivation.
  *
  * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    CRS
+ * @subpackage CRS/includes
+ * @author     Denis Nichik <crs@deninichi.com>
  */
-class Plugin_Name_Deactivator {
+class CRS_Deactivator {
 
-	/**
+	/**S
 	 * Short Description. (use period)
 	 *
 	 * Long Description.
