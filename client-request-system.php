@@ -37,7 +37,7 @@ define( 'CRS_VERSION', '1.0.0' );
  */
 function activate_crs() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-crs-activator.php';
-	Plugin_Name_Activator::activate();
+	CRS_Activator::activate();
 }
 
 /**
@@ -46,7 +46,7 @@ function activate_crs() {
  */
 function deactivate_crs() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-crs-deactivator.php';
-	Plugin_Name_Deactivator::deactivate();
+	CRS_Deactivator::deactivate();
 }
 
 register_activation_hook( __FILE__, 'activate_crs' );
