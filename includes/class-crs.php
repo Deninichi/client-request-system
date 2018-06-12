@@ -194,6 +194,7 @@ class CRS {
 		$this->loader->add_filter('acf/settings/path', $plugin_acf, 'crs_acf_settings_path');
 		$this->loader->add_filter('acf/settings/dir', $plugin_acf, 'crs_acf_settings_dir');
 		//$this->loader->add_filter('acf/settings/show_admin', $plugin_acf, '__return_false');
+		//$this->loader->add_filter('init', $plugin_acf, 'crs_render_custom_fields');
 
 	}
 
