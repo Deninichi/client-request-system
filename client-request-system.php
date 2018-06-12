@@ -31,6 +31,9 @@ if ( ! defined( 'WPINC' ) ) {
  */
 define( 'CRS_VERSION', '1.0.0' );
 
+define( 'CRS_DIR', plugin_dir_url( __FILE__ ) );
+define( 'CRS_PATH', plugin_dir_path( __FILE__ ) );
+
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-crs-activator.php

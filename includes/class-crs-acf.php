@@ -20,4 +20,21 @@
  */
 class CRS_ACF {
 
+    public function crs_acf_settings_path( $path ){
+        // update path
+        $path = CRS_PATH . '/acf/';
+
+        // return
+        return $path;
+    }
+
+
+    public function crs_acf_settings_dir( $dir ) {
+
+        // update path
+        $dir = CRS_DIR . 'acf/';
+
+        // return
+        return $dir;
+    }
 }
