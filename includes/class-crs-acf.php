@@ -20,6 +20,12 @@
  */
 class CRS_ACF {
 
+    /**
+     * Change ACF path
+     *
+     * @since    1.0.0
+     * @param    string    $path      ACF path
+     */
     public function crs_acf_settings_path( $path ){
         // update path
         $path = CRS_PATH . '/acf/';
@@ -28,7 +34,12 @@ class CRS_ACF {
         return $path;
     }
 
-
+    /**
+     * Change ACF dir
+     *
+     * @since    1.0.0
+     * @param    string    $dir      ACF dir
+     */
     public function crs_acf_settings_dir( $dir ) {
 
         // update path
@@ -38,6 +49,48 @@ class CRS_ACF {
         return $dir;
     }
 
+    /**
+     * Save new Request post from frontend form
+     *
+     * @since    1.0.0
+     * @param    int    $post_id     New post ID
+     */
+    public function save_request_post( $post_id ){
+
+        $upload_dir = wp_upload_dir();
+        file_put_contents( $upload_dir['basedir'] . '/debug.txt', $post_id );
+
+
+        // check if this is to be a new post
+        if( $post_id != 'new_request_post' ) {
+            return $post_id;
+        }
+
+        if( empty( $_POST['acf'] ) ) {
+            return $post_id;
+        }
+
+        // A new Request post parameters
+        $post = array(
+            'post_type'     => 'request',
+            'post_status'   => 'publish',
+            'post_title'    => $_POST['acf']['field_5b21050d31bc6'] . ' - ' . $_POST['acf']['field_5b21053131bc8'],
+        );
+
+        // insert the post
+        $post_id = wp_insert_post( $post );
+
+        // Save the fields to the post
+        do_action( 'acf/save_post' , $post_id );
+        return $post_id;
+
+    }
+
+    /**
+     * Custom fields 
+     *
+     * @since    1.0.0
+     */
     public function crs_render_custom_fields(){
 
         if( function_exists('acf_add_local_field_group') ):

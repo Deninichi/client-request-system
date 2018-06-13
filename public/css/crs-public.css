@@ -2,3 +2,33 @@
  * All of the CSS for your public-facing functionality should be
  * included in this file.
  */
+
+ /*=== REQUEST FORM */
+.request-form{
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 10px #ccc;
+}
+#acf-form input{
+    padding: 7px;
+    height: auto;
+    border-radius: 5px;
+    border: 1px solid #aaa;
+}
+#acf-form a{
+    font-weight: 600;
+}
+#acf-form ul{
+    padding: 0;
+}
+    #acf-form ul li {
+        margin: 0;
+    }
+        #acf-form ul li:before{
+            content: '';
+            display: none;
+        }
