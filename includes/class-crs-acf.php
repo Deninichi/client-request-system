@@ -57,8 +57,8 @@ class CRS_ACF {
      */
     public function save_request_post( $post_id ){
 
-        $upload_dir = wp_upload_dir();
-        file_put_contents( $upload_dir['basedir'] . '/debug.txt', $post_id );
+        // var_dump($_POST['acf']);
+        // wp_die();
 
 
         // check if this is to be a new post
@@ -74,11 +74,40 @@ class CRS_ACF {
         $post = array(
             'post_type'     => 'request',
             'post_status'   => 'publish',
-            'post_title'    => $_POST['acf']['field_5b21050d31bc6'] . ' - ' . $_POST['acf']['field_5b21053131bc8'],
+            'post_title'    => $_POST['acf']['field_5b21050d31bc6'],
         );
 
-        // insert the post
+        //insert the post
         $post_id = wp_insert_post( $post );
+
+        // Update Request post title
+        wp_update_post( array(
+            'ID'          => $post_id,
+            'post_title'  => '#' . $post_id . ' - ' . $_POST['acf']['field_5b21050d31bc6']
+        ) );
+
+        // Update Request data
+        update_field( 'r_client_id', get_current_user_id(), $post_id );
+        update_field( 'r_customer_info_name', $_POST['acf']['field_5b21050d31bc6'], $post_id );
+        update_field( 'r_customer_info_mailing_address', $_POST['acf']['field_5b21052231bc7'], $post_id );
+        update_field( 'r_customer_info_email', $_POST['acf']['field_5b21053131bc8'], $post_id );
+        update_field( 'r_customer_info_phone', $_POST['acf']['field_5b21053b31bc9'], $post_id );
+
+        // Products repeater
+        foreach ( $_POST['acf']['field_5b21059631bca']['field_5b21059631bca_field_5b2047b8e175d'] as $key => $product ) {
+            
+            update_sub_field( array('r_products', $key+1, 'product_url_1'), $product['field_5b2047c9e175e'], $post_id );
+            update_sub_field( array('r_products', $key+1, 'product_image_1'), $product['field_5b20481fe1760'], $post_id );
+            update_sub_field( array('r_products', $key+1, 'product_url_2'), $product['field_5b2047efe175f'], $post_id );
+            update_sub_field( array('r_products', $key+1, 'product_image_2'), $product['field_5b20484de1761'], $post_id );
+        
+        }
+
+        update_field( 'r_order_qty', $_POST['acf']['field_5b2105b331bcb'], $post_id );
+        update_field( 'r_note_to_agent', $_POST['acf']['field_5b2105e531bcc'], $post_id );
+        update_field( 'r_file_attachment', $_POST['acf']['field_5b2105fd31bcd'], $post_id );
+        update_field( 'r_notifications', $_POST['acf']['field_5b21061a31bce'], $post_id );
+
 
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
