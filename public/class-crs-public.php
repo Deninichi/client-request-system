@@ -100,4 +100,12 @@ class CRS_Public {
 
 	}
 
+	public function render_request_form( $atts ){
+
+		if ( 'create-request-form' == $atts[0] ) {
+			include dirname(__FILE__) . '/partials/request-form.php';
+		}
+
+	}
+
 }

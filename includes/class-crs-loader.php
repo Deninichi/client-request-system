@@ -82,6 +82,20 @@ class CRS_Loader {
 	}
 
 	/**
+	 * Add a new shortcode to the collection to be registered with WordPress.
+	 *
+	 * @since    1.0.0
+	 * @param    string               $hook             The name of the WordPress shortcode that is being registered.
+	 * @param    object               $component        A reference to the instance of the object on which the filter is defined.
+	 * @param    string               $callback         The name of the function definition on the $component.
+	 * @param    int                  $priority         Optional. The priority at which the function should be fired. Default is 10.
+	 * @param    int                  $accepted_args    Optional. The number of arguments that should be passed to the $callback. Default is 1
+	 */
+	public function add_shortcode( $shortcode, $component, $callback ) {
+		$this->shortcodes = $this->add( $this->shortcodes, $shortcode, $component, $callback, '', '' );
+	}
+
+	/**
 	 * A utility function that is used to register the actions and hooks into a single
 	 * collection.
 	 *
@@ -122,6 +136,10 @@ class CRS_Loader {
 
 		foreach ( $this->actions as $hook ) {
 			add_action( $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args'] );
+		}
+
+		foreach ( $this->shortcodes as $shortcode ) {
+			add_shortcode( $shortcode['hook'], array( $shortcode['component'], $shortcode['callback'] ) );
 		}
 
 	}
