@@ -13,6 +13,9 @@
     border: 1px solid #ccc;
     box-shadow: 2px 2px 10px #ccc;
 }
+.request-form .request-limit{
+    float: right;
+}
 #acf-form input{
     padding: 7px;
     height: auto;

@@ -127,6 +127,11 @@ class CRS {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-crs-admin.php';
 
 		/**
+		 * The class responsible for defining all actions for Client.
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-crs-client.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
@@ -165,10 +170,13 @@ class CRS {
 	private function define_admin_hooks() {
 
 		$plugin_admin = new CRS_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_client = new CRS_Client( $this->get_plugin_name() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 
+		//Client
+		$this->loader->add_action( 'update_clients_limits', $plugin_client, 'update_clients_limits_callback' );
 	}
 
 	/**
@@ -190,13 +198,13 @@ class CRS {
 
 		//Request
 		$this->loader->add_action( 'init', $plugin_request, 'register_request_post_type' );
+		$this->loader->add_filter('acf/pre_save_post', $plugin_request, 'save_request_post');
 
 		//ACF
 		$this->loader->add_filter('acf/settings/path', $plugin_acf, 'crs_acf_settings_path');
 		$this->loader->add_filter('acf/settings/dir', $plugin_acf, 'crs_acf_settings_dir');
 		//$this->loader->add_filter('acf/settings/show_admin', $plugin_acf, '__return_false');
 		//$this->loader->add_filter('init', $plugin_acf, 'crs_render_custom_fields');
-		$this->loader->add_filter('acf/pre_save_post', $plugin_acf, 'save_request_post');
 
 	}
 

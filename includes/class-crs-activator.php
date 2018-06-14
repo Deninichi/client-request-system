@@ -30,7 +30,11 @@ class CRS_Activator {
 	 * @since    1.0.0
 	 */
 	public static function activate() {
+        flush_rewrite_rules();
 
+        if (! wp_next_scheduled ( 'update_clients_limits' ) ) {
+            wp_schedule_event( strtotime('tomorrow'), 'daily', 'update_clients_limits' );
+        }
 	}
 
 }
