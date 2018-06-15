@@ -120,12 +120,17 @@ class CRS_Request {
             'post_title'  => '#' . $post_id . ' - ' . $_POST['acf']['field_5b21050d31bc6']
         ) );
 
+
         // Update Request data
+        $customer_info = array(
+            'name' => $_POST['acf']['field_5b21050d31bc6'],
+            'mailing_address' => $_POST['acf']['field_5b21052231bc7'],
+            'email' => $_POST['acf']['field_5b21053131bc8'],
+            'phone' => $_POST['acf']['field_5b21053b31bc9'],
+        );
+
         update_field( 'r_client_id', get_current_user_id(), $post_id );
-        update_field( 'r_customer_info_name', $_POST['acf']['field_5b21050d31bc6'], $post_id );
-        update_field( 'r_customer_info_mailing_address', $_POST['acf']['field_5b21052231bc7'], $post_id );
-        update_field( 'r_customer_info_email', $_POST['acf']['field_5b21053131bc8'], $post_id );
-        update_field( 'r_customer_info_phone', $_POST['acf']['field_5b21053b31bc9'], $post_id );
+        update_field( 'r_customer_info', $customer_info, $post_id );
 
         // Products repeater
         foreach ( $_POST['acf']['field_5b21059631bca']['field_5b21059631bca_field_5b2047b8e175d'] as $key => $product ) {

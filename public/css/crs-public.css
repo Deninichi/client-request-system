@@ -4,7 +4,7 @@
  */
 
  /*=== REQUEST FORM */
-.request-form{
+.amazonsellerclub-form{
     max-width: 600px;
     margin: auto;
     padding: 20px;
@@ -13,10 +13,21 @@
     border: 1px solid #ccc;
     box-shadow: 2px 2px 10px #ccc;
 }
-.request-form .request-limit{
+.amazonsellerclub-form .request-limit{
     float: right;
 }
-#acf-form input{
+
+.amazonsellerclub-form.respond-form h3{
+    text-align: center;
+    color: black;
+    font-weight: 600;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+#acf-form input, #acf-form select, #acf-form textarea {
     padding: 7px;
     height: auto;
     border-radius: 5px;
@@ -34,4 +45,16 @@
         #acf-form ul li:before{
             content: '';
             display: none;
+        }
+    #acf-form .acf-form-submit{
+        text-align: center;
+    }
+        #acf-form .acf-form-submit .acf-button{
+            background: #ff6a00;
+            border: 0;
+            padding: 10px 35px;
+            color: white;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }

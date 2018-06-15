@@ -8,7 +8,7 @@
 
 ?>
 
-<div class="request-form">
+<div class="request-form amazonsellerclub-form">
     <div class="request-limit"><strong>Limit: </strong><?php the_field( 'u_request_limit', 'user_' . get_current_user_id() ); ?></div>
     <?php
         acf_form(array(

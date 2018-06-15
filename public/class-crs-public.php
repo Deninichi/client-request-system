@@ -104,6 +104,12 @@ class CRS_Public {
 
 		if ( 'create-request-form' == $atts[0] ) {
 			include dirname(__FILE__) . '/partials/request-form.php';
+		} elseif( 'agent-form' == $atts[0] ) {
+			if ( isset( $_GET['requestId'] ) ) {
+				include dirname(__FILE__) . '/partials/respond-form.php';
+			} else {
+				include dirname(__FILE__) . '/partials/requests-list.php';
+			}
 		}
 
 	}
