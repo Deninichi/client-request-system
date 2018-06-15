@@ -5,7 +5,7 @@
 
  /*=== REQUEST FORM */
 .amazonsellerclub-form{
-    max-width: 600px;
+    max-width: 800px;
     margin: auto;
     padding: 20px;
     background: white;
@@ -33,6 +33,11 @@
     border-radius: 5px;
     border: 1px solid #aaa;
 }
+
+#acf-form ul.acf-checkbox-list li label {
+    font-size: 16px;
+}
+
 #acf-form a{
     font-weight: 600;
 }
@@ -46,6 +51,16 @@
             content: '';
             display: none;
         }
+
+    /* Hide label */
+    #acf-form .acf-field.hide_label .acf-label label{
+        visibility: hidden;
+    }
+    #acf-form .acf-field.d_n_label .acf-label label{
+        display: none;
+    }
+
+    /* Submit button */
     #acf-form .acf-form-submit{
         text-align: center;
     }
