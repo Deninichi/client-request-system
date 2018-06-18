@@ -73,3 +73,34 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+
+/*=== REQUESTS LIST ===*/
+.requests-list{
+
+}
+
+.requests-list .request-view{
+    color: #22abe4;
+}
+.requests-list .request-complete{
+    color: #02ad51;
+}
+
+
+/*=== ERROR MESSAGE ===*/
+.error-message{
+    max-width: 500px;
+    margin: auto;
+    background: white;
+}
+.error-message .error-title{
+    padding: 10px 20px;
+    background-color: #f76f6f;
+    color: white;
+    font-size: 30px;
+    margin: 0;
+}
+.error-message p{
+    padding: 10px 20px;
+}

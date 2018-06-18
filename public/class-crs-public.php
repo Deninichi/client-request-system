@@ -102,8 +102,17 @@ class CRS_Public {
 
 	public function render_request_form( $atts ){
 
+		$user_id = get_current_user_id();
+
 		if ( 'create-request-form' == $atts[0] ) {
-			include dirname(__FILE__) . '/partials/request-form.php';
+
+			if( CRS_Client::has_client_limits( get_current_user_id() ) ){
+				include dirname(__FILE__) . '/partials/request-form.php';
+			} else {
+				include dirname(__FILE__) . '/partials/error-no-limits.php';
+			}
+			
+
 		} elseif( 'agent-form' == $atts[0] ) {
 			if ( isset( $_GET['requestId'] ) ) {
 				include dirname(__FILE__) . '/partials/respond-form.php';

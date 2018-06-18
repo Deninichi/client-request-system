@@ -52,14 +52,31 @@ class CRS_Client {
             $match_date = date( "d-m-Y", strtotime( get_field( 'u_next_limit_update_date', 'user_' . $user->ID ) ) );
             $match_time = strtotime( $match_date );
 
-            var_dump( $today == $match_date );
-
             if( $today == $match_date ){
                 update_field( 'u_next_limit_update_date', strtotime("+1 month"), 'user_' . $user->ID );
                 update_field( 'u_request_limit', 10, 'user_' . $user->ID );
             }
         }
 
+    }
+    
+    /**
+     * Check if user has limit to make request.
+     *
+     * @since    1.0.0
+     *
+     * @param    string   $user_id     Current user ID
+     *
+     * @return   Boolean               Is user has limit to make request
+     * 
+     */
+    public function has_client_limits( $user_id ){
+
+        if ( 0 < get_field( 'u_next_limit_update_date', 'user_' . $user_id ) ) {
+            return true;
+        }
+
+        return false;
     }
 
 }

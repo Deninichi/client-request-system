@@ -199,6 +199,7 @@ class CRS {
 		//Request
 		$this->loader->add_action( 'init', $plugin_request, 'register_request_post_type' );
 		$this->loader->add_filter('acf/pre_save_post', $plugin_request, 'save_request_post');
+		$this->loader->add_filter('acf/pre_save_post', $plugin_request, 'save_answer_post');
 
 		//ACF
 		$this->loader->add_filter('acf/settings/path', $plugin_acf, 'crs_acf_settings_path');
