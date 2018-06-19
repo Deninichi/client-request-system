@@ -134,7 +134,7 @@ class CRS_Request {
 
         // Products repeater
         foreach ( $_POST['acf']['field_5b21059631bca'] as $key => $product ) {
-            
+
             update_field( array('r_products', $key+1, 'product_url'), $product["field_5b22c4b629ad9"], $post_id );
         
         }
@@ -152,12 +152,70 @@ class CRS_Request {
         // update_field( 'r_file_attachment', $_POST['acf']['field_5b2105fd31bcd'], $post_id );
         // update_field( 'r_notifications', $_POST['acf']['field_5b21061a31bce'], $post_id );
 
+        //Update Status
+        update_field( 'r_status', 'opened', $post_id );
 
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
 
         $limit = get_field( 'u_request_limit', 'user_' . get_current_user_id() );
         update_field( 'u_request_limit', $limit - 1, 'user_' . get_current_user_id() );
+
+        return $post_id;
+
+    }
+
+
+    /**
+     * Save Agent answer from frontend form to Respond post
+     *
+     * @since    1.0.0
+     * @param    int    $post_id     New post ID
+     */
+    public function save_answer_post( $post_id ){
+
+        // var_dump($_POST);
+        // wp_die();
+
+        // check if this is to be a new post
+        if( $post_id === 'new_request_post' ) {
+            return $post_id;
+        }
+
+        if( empty( $_POST['acf'] ) ) {
+            return $post_id;
+        }
+
+        // Foctories repeater
+        foreach ( $_POST['acf']['field_5b22e0e0f041b'] as $key => $factory ) {
+
+            update_field( array('r_product_pricing', $key+1, 'r_factory_price'), $factory["field_5b22f48644d6d"], $post_id );
+            update_field( array('r_product_pricing', $key+1, 'r_fob'), $factory["field_5b240e62e40df"], $post_id );
+            update_field( array('r_product_pricing', $key+1, 'r_minimum_order_qty'), $factory["field_5b2049f445c8c"], $post_id );
+            
+            $cost_for_samples = array(
+                'r_shipping_price'       => $factory['field_5b22e22012b82']["field_5b22ec9f68491"],
+                'r_packaging_included'   => $factory['field_5b22e22012b82']["field_5b2407d502048"],
+                'r_consolidate_shipping' => $factory['field_5b22e22012b82']["field_5b22e1d78138a"],
+            );
+            update_field( array('r_product_pricing', $key+1, 'r_cost_for_samples'), $cost_for_samples, $post_id );        
+        }
+
+        //Agent images
+        $product_images = array(
+            'image_1' => $_POST['acf']['field_5b22e135f041d']['field_5b27d0cee766f'],
+            'image_2' => $_POST['acf']['field_5b22e135f041d']['field_5b27d3586f281'],
+            'image_3' => $_POST['acf']['field_5b22e135f041d']['field_5b27d35e6f282'],
+        );
+        update_field( 'r_agent_images', $product_images, $post_id );
+
+        //update_field( 'r_notes_to_client', $_POST['acf']['field_5b22e0574c89a'], $post_id );
+
+        //Update Status
+        update_field( 'r_status', 'answered', $post_id );
+
+        // Save the fields to the post
+        do_action( 'acf/save_post' , $post_id );
 
         return $post_id;
 
