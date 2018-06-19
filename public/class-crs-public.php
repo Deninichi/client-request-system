@@ -106,12 +106,15 @@ class CRS_Public {
 
 		if ( 'create-request-form' == $atts[0] ) {
 
-			if( CRS_Client::has_client_limits( get_current_user_id() ) ){
-				include dirname(__FILE__) . '/partials/request-form.php';
+			if ( isset( $_GET['requestId'] ) && $user_id == get_field( 'r_client_id', $_GET['requestId'] ) ) {
+				include dirname(__FILE__) . '/partials/full-details.php';
 			} else {
-				include dirname(__FILE__) . '/partials/error-no-limits.php';
+				if( CRS_Client::has_client_limits( get_current_user_id() ) ){
+					include dirname(__FILE__) . '/partials/request-form.php';
+				} else {
+					include dirname(__FILE__) . '/partials/error-no-limits.php';
+				}
 			}
-			
 
 		} elseif( 'agent-form' == $atts[0] ) {
 			if ( isset( $_GET['requestId'] ) ) {

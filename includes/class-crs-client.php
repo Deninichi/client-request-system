@@ -72,7 +72,7 @@ class CRS_Client {
      */
     public function has_client_limits( $user_id ){
 
-        if ( 0 < get_field( 'u_next_limit_update_date', 'user_' . $user_id ) ) {
+        if ( 0 < get_field( 'u_request_limit', 'user_' . $user_id ) ) {
             return true;
         }
 

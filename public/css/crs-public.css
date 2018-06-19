@@ -87,6 +87,10 @@
     color: #02ad51;
 }
 
+/*=== REQUESTS DETAILS ===*/
+.factory-end-row{
+    border-bottom: 2px solid;
+}
 
 /*=== ERROR MESSAGE ===*/
 .error-message{
