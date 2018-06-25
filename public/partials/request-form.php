@@ -3,9 +3,6 @@
     if ( ! defined( 'ABSPATH' ) ) {
         exit; // Exit if accessed directly
     }
-
-    acf_form_head();
-
 ?>
 
 <div class="request-form amazonsellerclub-form">

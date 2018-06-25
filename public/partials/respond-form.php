@@ -4,7 +4,6 @@
         exit; // Exit if accessed directly
     }
 
-    acf_form_head();
     $request_id = $_GET['requestId'];
 
 ?>

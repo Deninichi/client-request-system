@@ -98,6 +98,12 @@ class CRS_Public {
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/crs-public.js', array( 'jquery' ), $this->version, false );
 
+		wp_localize_script( $this->plugin_name, 'ajax', 
+			array(
+				'url' => admin_url('admin-ajax.php')
+			)
+		);
+
 	}
 
 	public function render_request_form( $atts ){

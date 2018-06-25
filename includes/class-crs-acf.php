@@ -51,6 +51,20 @@ class CRS_ACF {
 
 
     /**
+     * Change ACF dir
+     *
+     * @since    1.0.0
+     * @param    string    $dir      ACF dir
+     */
+    public function crs_add_acf_header() {
+
+        //if ( is_page( 1355 ) || is_page( 1391 ) ){
+            acf_form_head();
+        //}
+    }
+
+
+    /**
      * Custom fields 
      *
      * @since    1.0.0

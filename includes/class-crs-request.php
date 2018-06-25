@@ -124,9 +124,17 @@ class CRS_Request {
         // Update Request data
         $customer_info = array(
             'name' => $_POST['acf']['field_5b21050d31bc6'],
-            'mailing_address' => $_POST['acf']['field_5b21052231bc7'],
-            'email' => $_POST['acf']['field_5b21053131bc8'],
-            'phone' => $_POST['acf']['field_5b21053b31bc9'],
+            'mailing_address' => array(
+                'address_1' => $_POST['acf']['field_5b21052231bc7']['field_5b30b9b2f6589'],
+                'address_2' => $_POST['acf']['field_5b21052231bc7']['field_5b30b9b8f658a'],
+                'city' => $_POST['acf']['field_5b21052231bc7']['field_5b30b9cef658b'],
+                'state_us' => $_POST['acf']['field_5b21052231bc7']['field_5b30b9d1f658c'],
+                'state' => $_POST['acf']['field_5b21052231bc7']['field_5b30bbbaf658d'],
+                'postal_code' => $_POST['acf']['field_5b21052231bc7']['field_5b30bbd5f658e'],
+                'country' => $_POST['acf']['field_5b21052231bc7']['field_5b30bbdbf658f'],
+            ),
+            'postal_code' => $_POST['acf']['field_5b21053131bc8'],
+            'country' => $_POST['acf']['field_5b21053b31bc9'],
         );
 
         update_field( 'r_client_id', get_current_user_id(), $post_id );
@@ -219,6 +227,11 @@ class CRS_Request {
 
         return $post_id;
 
+    }
+
+    public function change_request_status_callback(){
+        var_dump($_POST);
+        wp_die();
     }
 
 }
