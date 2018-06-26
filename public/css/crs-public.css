@@ -80,11 +80,27 @@
 
 }
 
+.requests-list .status{
+    font-weight: 600;
+}
+    .requests-list .completed .status{
+        color: #00b50e;
+    }
+    .requests-list .opened .status{
+        color: #ff0000;
+    }
+    .requests-list .answered .status{
+        color: #ffa500;
+    }
+
 .requests-list .request-view{
     color: #22abe4;
 }
 .requests-list .request-complete{
     color: #02ad51;
+}
+.requests-list .request-remove{
+    color: #ff0000;
 }
 
 /*=== REQUESTS DETAILS ===*/

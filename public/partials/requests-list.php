@@ -23,12 +23,18 @@
 					$client_details = get_field( 'r_customer_info', $request_id );
 					$request_status = get_field( 'r_status', $request_id );
 				?>
-				<tr data-request-id="<?php echo $request->ID ?>">
+				<tr class="<?php echo $request_status; ?>" data-request-id="<?php echo $request->ID ?>" data-request-status="<?php echo $request_status ?>">
 					<td><?php echo $request->ID ?></td>
 					<td><?php echo $client_details['name']; ?></td>
 					<td><?php echo $client_details['email']; ?></td>
-					<td><?php echo $request_status ?></td>
-					<td><a class="request-view" href="?requestId=<?php echo $request->ID ?>">View</a> | <a class="request-complete" href="#">Complete</a> | <a class="request-remove" href="">Remove</a></td>
+					<td class="status"><?php echo $request_status ?></td>
+					<td>
+						<a class="request-view" href="?requestId=<?php echo $request->ID ?>">View</a> | 
+						<?php if ( 'completed' !== $request_status ): ?>
+							<a class="request-complete" href="#">Complete</a> | 
+						<?php endif ?>
+						<a class="request-remove" href="">Remove</a>
+					</td>
 				</tr>
 			<?php endforeach ?>
 		</tbody>

@@ -202,6 +202,7 @@ class CRS {
 		$this->loader->add_filter('acf/pre_save_post', $plugin_request, 'save_request_post');
 		$this->loader->add_filter('acf/pre_save_post', $plugin_request, 'save_answer_post');
 		$this->loader->add_action( 'wp_ajax_change_request_status', $plugin_request, 'change_request_status_callback' );
+		$this->loader->add_action( 'wp_ajax_remove_request', $plugin_request, 'remove_request_callback' );
 
 		//ACF
 		$this->loader->add_filter('acf/settings/path', $plugin_acf, 'crs_acf_settings_path');

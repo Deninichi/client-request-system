@@ -32,23 +32,46 @@
 	 $(document).ready(function() {
 	 	$('.requests-list .request-complete').click(function(event) {
 		 	event.preventDefault();
-		 	
-		 	let request_id = $(this).closest('tr').data('request-id');
-		 	console.log(request_id)
 
-		 	$.post({
-		 		url: ajax.url,
-		 		data: {
+		 	let request_id = $(this).closest('tr').data('request-id');
+
+		 	$.post(
+		 		ajax.url,
+		 		{
 		 			action: 'change_request_status',
 		 			request_id: request_id,
 		 			new_status: 'complete'
 		 		},
-			 	function(response) {
-					console.log(response);
+			 	function(data, textStatus, xhr) {
+					console.log(data);
 				}
-		 	})
+		 	)
 
 		 });
+
+	 	$('.requests-list .request-complete').click(function(event) {
+		 	event.preventDefault();
+
+		 	let row = $(this).closest('tr');
+		 	let request_id = $(this).closest('tr').data('request-id');
+
+		 	$.post(
+		 		ajax.url,
+		 		{
+		 			action: 'change_request_status',
+		 			request_id: request_id,
+		 			new_status: 'completed',
+		 			nonce_code: ajax.nonce
+		 		},
+			 	function(data, textStatus, xhr) {
+					if ( 'ok' === data ) {
+						row.removeClass().addClass('completed')
+						row.find('.status').text('Completed')
+					}
+				}
+		 	)
+
+		});
 
 	 	if ( $('#acf-field_5b21052231bc7-field_5b30bbdbf658f').val() === 'united_states' ) {
 	 		$('.acf-field-5b30b9d1f658c').show();

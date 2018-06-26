@@ -230,7 +230,32 @@ class CRS_Request {
     }
 
     public function change_request_status_callback(){
-        var_dump($_POST);
+
+        if( ! wp_verify_nonce( $_POST['nonce_code'], 'crs-ajax-nonce' ) )
+            die( 'Permissions denied!');
+
+        if( ! pmpro_hasMembershipLevel( 1 ) )
+            die('Permissions denied!');
+
+        //Update Status
+        update_field( 'r_status', $_POST['new_status'], $_POST['request_id'] );
+
+        echo 'ok';
+
+        wp_die();
+    }
+
+    public function remove_request_callback(){
+
+        if( ! wp_verify_nonce( $_POST['nonce_code'], 'crs-ajax-nonce' ) )
+            die( 'Permissions denied!');
+
+        if( ! pmpro_hasMembershipLevel( 2 ) )
+            die('Permissions denied!');
+
+        //Remove Request post
+        wp_delete_post( $_POST['request_id'], true );
+
         wp_die();
     }
 
