@@ -231,7 +231,7 @@ class CRS_Request {
         if( ! wp_verify_nonce( $_POST['nonce_code'], 'crs-ajax-nonce' ) )
             die( 'Permissions denied!');
 
-        if( ! pmpro_hasMembershipLevel( 1 ) )
+        if( ! pmpro_hasMembershipLevel( 2 ) && ! current_user_can( 'manage_options' ) )
             die('Permissions denied!');
 
         //Update Status
@@ -247,7 +247,7 @@ class CRS_Request {
         if( ! wp_verify_nonce( $_POST['nonce_code'], 'crs-ajax-nonce' ) )
             die( 'Permissions denied!');
 
-        if( ! pmpro_hasMembershipLevel( 2 ) )
+        if( ! pmpro_hasMembershipLevel( 2 ) && ! current_user_can( 'manage_options' ) )
             die('Permissions denied!');
 
         //Remove Request post

@@ -48,8 +48,6 @@ class CRS_Email {
         $client_details = get_field( 'r_customer_info', $request_id );
         $to = $client_details['email'];
 
-        $subject = '';
-        $message = '';
         switch ( $email_type ) {
             case 'request-quote-to-client':
                 $subject = 'You have a quote request from Amazon Sellers Club';
