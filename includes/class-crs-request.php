@@ -91,10 +91,6 @@ class CRS_Request {
      */
     public function save_request_post( $post_id ){
 
-        // var_dump($_POST['acf']);
-        // wp_die();
-
-
         // check if this is to be a new post
         if( $post_id != 'new_request_post' ) {
             return $post_id;
@@ -133,8 +129,8 @@ class CRS_Request {
                 'postal_code' => $_POST['acf']['field_5b21052231bc7']['field_5b30bbd5f658e'],
                 'country' => $_POST['acf']['field_5b21052231bc7']['field_5b30bbdbf658f'],
             ),
-            'postal_code' => $_POST['acf']['field_5b21053131bc8'],
-            'country' => $_POST['acf']['field_5b21053b31bc9'],
+            'email' => $_POST['acf']['field_5b21053131bc8'],
+            'phone' => $_POST['acf']['field_5b21053b31bc9'],
         );
 
         update_field( 'r_client_id', get_current_user_id(), $post_id );
@@ -169,6 +165,8 @@ class CRS_Request {
         $limit = get_field( 'u_request_limit', 'user_' . get_current_user_id() );
         update_field( 'u_request_limit', $limit - 1, 'user_' . get_current_user_id() );
 
+        CRS_Email::crs_send_email( 'request-quote-to-client', $post_id );
+
         return $post_id;
 
     }
@@ -181,9 +179,6 @@ class CRS_Request {
      * @param    int    $post_id     New post ID
      */
     public function save_answer_post( $post_id ){
-
-        // var_dump($_POST);
-        // wp_die();
 
         // check if this is to be a new post
         if( $post_id === 'new_request_post' ) {
@@ -200,7 +195,7 @@ class CRS_Request {
             update_field( array('r_product_pricing', $key+1, 'r_factory_price'), $factory["field_5b22f48644d6d"], $post_id );
             update_field( array('r_product_pricing', $key+1, 'r_fob'), $factory["field_5b240e62e40df"], $post_id );
             update_field( array('r_product_pricing', $key+1, 'r_minimum_order_qty'), $factory["field_5b2049f445c8c"], $post_id );
-            
+
             $cost_for_samples = array(
                 'r_shipping_price'       => $factory['field_5b22e22012b82']["field_5b22ec9f68491"],
                 'r_packaging_included'   => $factory['field_5b22e22012b82']["field_5b2407d502048"],
@@ -224,6 +219,8 @@ class CRS_Request {
 
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
+
+        CRS_Email::crs_send_email( 'request-quote-response', $post_id );
 
         return $post_id;
 

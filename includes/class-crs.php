@@ -117,9 +117,14 @@ class CRS {
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-crs-request.php';
 
 		/**
-		 * The class responsible for defining all actions that occur in the ACF {lugin.
+		 * The class responsible for defining all actions that occur in the ACF plugin.
 		 */
 		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-crs-acf.php';
+
+		/**
+		 * The class responsible for defining all actions that occur in the emails
+		 */
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-crs-email.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
