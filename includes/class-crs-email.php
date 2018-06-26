@@ -49,11 +49,12 @@ class CRS_Email {
         $to = $client_details['email'];
 
         switch ( $email_type ) {
-            case 'request-quote-to-client':
+            case 'request-quote':
                 $subject = 'You have a quote request from Amazon Sellers Club';
+                //$to = 'info@jingconsulting.com';
                 break;
 
-            case 'request-quote-response':
+            case 'request-response':
                 $subject = 'Our Agent has responded to your quote request';
                 break;
         }

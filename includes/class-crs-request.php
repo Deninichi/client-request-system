@@ -165,7 +165,7 @@ class CRS_Request {
         $limit = get_field( 'u_request_limit', 'user_' . get_current_user_id() );
         update_field( 'u_request_limit', $limit - 1, 'user_' . get_current_user_id() );
 
-        CRS_Email::crs_send_email( 'request-quote-to-client', $post_id );
+        CRS_Email::crs_send_email( 'request-quote', $post_id );
 
         return $post_id;
 
@@ -220,7 +220,7 @@ class CRS_Request {
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
 
-        CRS_Email::crs_send_email( 'request-quote-response', $post_id );
+        CRS_Email::crs_send_email( 'request-response', $post_id );
 
         return $post_id;
 
