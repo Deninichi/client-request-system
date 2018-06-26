@@ -113,22 +113,38 @@ class CRS_Public {
 
 		if ( 'create-request-form' == $atts[0] ) {
 
-			if ( isset( $_GET['requestId'] ) && $user_id == get_field( 'r_client_id', $_GET['requestId'] ) ) {
-				include dirname(__FILE__) . '/partials/full-details.php';
+			if ( isset( $_GET['requestId'] ) ) {
+
+				if ( $user_id == get_field( 'r_client_id', $_GET['requestId'] ) ) {
+					include dirname(__FILE__) . '/partials/full-details.php';
+				} else {
+					include dirname(__FILE__) . '/partials/error-no-access.php';
+				}
+
 			} else {
+
 				if( CRS_Client::has_client_limits( get_current_user_id() ) ){
 					include dirname(__FILE__) . '/partials/request-form.php';
 				} else {
 					include dirname(__FILE__) . '/partials/error-no-limits.php';
 				}
+
 			}
 
 		} elseif( 'agent-form' == $atts[0] ) {
-			if ( isset( $_GET['requestId'] ) ) {
-				include dirname(__FILE__) . '/partials/respond-form.php';
+
+			if ( pmpro_hasMembershipLevel( 2 ) || current_user_can( 'manage_options' ) ) {
+
+				if ( isset( $_GET['requestId'] ) ) {
+					include dirname(__FILE__) . '/partials/respond-form.php';
+				} else {
+					include dirname(__FILE__) . '/partials/requests-list.php';
+				}
+
 			} else {
-				include dirname(__FILE__) . '/partials/requests-list.php';
+				include dirname(__FILE__) . '/partials/error-no-access.php';
 			}
+
 		}
 
 	}
