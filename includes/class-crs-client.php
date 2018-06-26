@@ -57,9 +57,8 @@ class CRS_Client {
                 update_field( 'u_request_limit', 10, 'user_' . $user->ID );
             }
         }
-
     }
-    
+
     /**
      * Check if user has limit to make request.
      *
@@ -68,7 +67,7 @@ class CRS_Client {
      * @param    string   $user_id     Current user ID
      *
      * @return   Boolean               Is user has limit to make request
-     * 
+     *
      */
     public function has_client_limits( $user_id ){
 
@@ -77,6 +76,22 @@ class CRS_Client {
         }
 
         return false;
+    }
+
+    /**
+     * Save additional fields fields when user registered
+     *
+     * @since    1.0.0
+     *
+     * @param    string   $user_id     Current user ID
+     *
+     * @return   Boolean               Is user has limit to make request
+     *
+     */
+    public function client_registration_save_limits( $user_id ){
+        $today = date('d-m-Y', time() );
+        update_field( 'u_next_limit_update_date', strtotime( $today ), 'user_' . $user_id );
+        update_field( 'u_request_limit', 10, 'user_' . $user_id );
     }
 
 }

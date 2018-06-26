@@ -177,6 +177,7 @@ class CRS {
 
 		//Client
 		$this->loader->add_action( 'update_clients_limits', $plugin_client, 'update_clients_limits_callback' );
+		$this->loader->add_action( 'user_register', $plugin_client, 'client_registration_save_limits' );
 	}
 
 	/**
