@@ -33,7 +33,7 @@
 						<?php if ( 'completed' !== $request_status ): ?>
 							<a class="request-complete" href="#">Complete</a> | 
 						<?php endif ?>
-						<a class="request-remove" href="">Remove</a>
+						<!-- <a class="request-remove" href="">Remove</a> -->
 					</td>
 				</tr>
 			<?php endforeach ?>
