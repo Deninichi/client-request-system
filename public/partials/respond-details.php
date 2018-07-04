@@ -45,10 +45,6 @@
                 <td><?php echo $factory['r_cost_for_samples']['r_consolidate_shipping'][0]; ?></td>
             </tr>
         <?php endforeach ?>
-        <tr>
-            <td><strong><?php _e( 'QTY Desired', 'crs' ) ?></strong></td>
-            <td colspan="2"><?php the_field( 'r_order_qty', $request_id ) ?></td>
-        </tr>
          <tr>
             <td colspan="3"><strong><?php _e( 'Agent Images', 'crs' ) ?></strong></td>
         </tr>
