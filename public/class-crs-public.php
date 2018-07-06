@@ -149,4 +149,36 @@ class CRS_Public {
 
 	}
 
+	function crs_add_body_classes($classes) {
+
+		$page = explode( '/', $_SERVER['REQUEST_URI'] );
+
+		switch ( $page[1] ) {
+			case 'quote-request':
+
+				if ( isset($_GET['requestId'] ) ) {
+					$classes[] = 'single-request';
+				}
+
+				$classes[] = 'quote-request';
+				break;
+
+			case 'respond-quote-request':
+				
+				if ( isset($_GET['requestId'] ) ) {
+					$classes[] = 'single-responce';
+				}
+
+				$classes[] = 'respond-quote';
+
+				break;
+
+			default:
+				$classes[] = '';
+				break;
+		}
+        
+        return $classes;
+	}
+
 }
