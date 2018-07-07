@@ -161,6 +161,8 @@ class CRS_Public {
 				}
 
 				$classes[] = 'quote-request';
+				$classes[] = 'crs-page';
+				
 				break;
 
 			case 'respond-quote-request':
@@ -170,6 +172,7 @@ class CRS_Public {
 				}
 
 				$classes[] = 'respond-quote';
+				$classes[] = 'crs-page';
 
 				break;
 

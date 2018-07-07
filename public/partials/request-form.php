@@ -20,3 +20,9 @@
     ?>
 </div>
 
+<script>
+    jQuery(document).ready(function($) {
+        let fields = $('.acf-fields > .member-info');
+        fields.slice(0, 4).wrapAll("<div class='gray-bg'></div>");
+    });
+</script>

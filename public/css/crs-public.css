@@ -5,15 +5,9 @@
 
  /*=== REQUEST FORM */
 .amazonsellerclub-form{
-    max-width: 800px;
-    margin: auto;
-    padding: 20px;
     background: white;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 2px 2px 10px #ccc;
 }
-.amazonsellerclub-form .request-limit{
+/*.amazonsellerclub-form .request-limit{
     float: right;
 }
 
@@ -53,15 +47,15 @@
         }
 
     /* Hide label */
-    #acf-form .acf-field.hide_label .acf-label label{
+/*    #acf-form .acf-field.hide_label .acf-label label{
         visibility: hidden;
     }
     #acf-form .acf-field.d_n_label .acf-label label{
         display: none;
-    }
+    }*/
 
     /* Submit button */
-    #acf-form .acf-form-submit{
+   /* #acf-form .acf-form-submit{
         text-align: center;
     }
         #acf-form .acf-form-submit .acf-button{
@@ -72,7 +66,7 @@
             font-size: 16px;
             text-transform: uppercase;
             letter-spacing: 1px;
-        }
+        }*/
 
 
 /*=== REQUESTS LIST ===*/
