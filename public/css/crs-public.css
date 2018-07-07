@@ -3,106 +3,179 @@
  * included in this file.
  */
 
- /*=== REQUEST FORM */
+/*===================================
+REQUEST FORM
+====================================*/
 .amazonsellerclub-form{
     background: white;
 }
-/*.amazonsellerclub-form .request-limit{
-    float: right;
+
+
+/*===================================
+RESPONSE FORM
+====================================*/
+.single-request .amazonsellerclub-form{
+    background: #FFF;
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px #cacaca;
+    box-sizing: border-box;
+    max-width: 880px;
+    width: 100%;
+    margin: auto;
+    padding: 10px 50px 30px;
+    margin-bottom: 50px;
 }
 
-.amazonsellerclub-form.respond-form h3{
+
+/*===================================
+REQUESTS LIST
+====================================*/
+.requests-list{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+}
+.requests-list .box{
+    background-color: #fff;
+    margin-bottom: 5px;
+}
+
+@media screen and (max-width: 768px){
+    .requests-list{
+        padding: 0 10px;
+    }
+    .requests-list .request .actions{
+        text-align: center;
+        margin-top: 10px;
+    }   
+}
+
+@media screen and (max-width: 480px){
+    .requests-list .request > div{
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 5px;
+        margin-bottom: 5px;
+    }  
+    .requests-list .request > div:last-child{
+        border: 0;
+    } 
+}
+
+
+/*===================================
+REQUEST/RESPONSE DETAILS
+====================================*/
+#request-details table.files td{
+    background-color: #f6f6f6;
+    padding: 50px 0;
     text-align: center;
-    color: black;
-    font-weight: 600;
-    border-top: 1px solid #eee;
-    padding-top: 20px;
+    color: #8ca1b7;
+    font-family: Intro;
+    font-style: italic;
+}
+
+.box{
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    padding: 5px 15px;x;
+    margin-bottom: 10px;
+}
+.box.row{
+    margin-left: 0;
+    margin-right: 0;
+}
+
+/* Request */
+#request-details .client-info .row {
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    padding: 5px 15px;
     margin: 0;
     margin-bottom: 10px;
 }
+#request-details .product{
+    word-wrap: break-word;
+}
 
-#acf-form input, #acf-form select, #acf-form textarea {
-    padding: 7px;
-    height: auto;
+/* Response */
+#response-details > .row,
+#request-details > .row {
+    margin: 0;
+}
+
+.crs-page .table-heading,
+#response-details .table-heading,
+#request-details .table-heading{
+    color: #fcae1b;
+    padding-left: 30px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 100;
+}
+.crs-page .heading,
+#response-details .heading,
+#request-details .heading {
+    color: rgba(149, 149, 149, 0.5);
+    margin: 0;
+    font-size: 20px;
+    padding-top: 3px;
+    font-family: Intro;
+    font-weight: 100;
+    white-space: nowrap;
+}
+
+#response-details .factory{
+    border: 1px solid #d7d7d7;
     border-radius: 5px;
-    border: 1px solid #aaa;
+    padding: 10px 30px;
+    margin-bottom: 10px;
 }
-
-#acf-form ul.acf-checkbox-list li label {
-    font-size: 16px;
-}
-
-#acf-form a{
-    font-weight: 600;
-}
-#acf-form ul{
-    padding: 0;
-}
-    #acf-form ul li {
+    #response-details .factory .heading{
+        border-bottom: 1px solid;
+        padding-bottom: 5px;
+        padding-top: 10px;
+        margin-bottom: 5px;
+        line-height: 1;
+    }
+    #response-details .factory > .row{
         margin: 0;
     }
-        #acf-form ul li:before{
-            content: '';
-            display: none;
+        #response-details .factory > .row > div{
+            border-bottom: 1px solid rgba(149, 149, 149, 0.5);
+            padding-left: 0;
+            padding-left: 0;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+        #response-details .factory > .row:last-child > div{
+            border: 0;
         }
 
-    /* Hide label */
-/*    #acf-form .acf-field.hide_label .acf-label label{
-        visibility: hidden;
-    }
-    #acf-form .acf-field.d_n_label .acf-label label{
-        display: none;
-    }*/
-
-    /* Submit button */
-   /* #acf-form .acf-form-submit{
-        text-align: center;
-    }
-        #acf-form .acf-form-submit .acf-button{
-            background: #ff6a00;
-            border: 0;
-            padding: 10px 35px;
-            color: white;
-            font-size: 16px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }*/
-
-
-/*=== REQUESTS LIST ===*/
-.requests-list{
-
+#response-details .agent-images .row,
+#request-details .agent-images .row {
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    margin: 0;
+}      
+#response-details .agent-images div,
+#request-details .agent-images div {
+    background: #f6f6f6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+#response-details .notes > div,
+#request-details .notes > div{
+    border: 1px solid #d7d7d7;
+    border-radius: 5px;
+    padding: 10px 30px;
 }
 
-.requests-list .status{
-    font-weight: 600;
-}
-    .requests-list .completed .status{
-        color: #00b50e;
-    }
-    .requests-list .opened .status{
-        color: #ff0000;
-    }
-    .requests-list .answered .status{
-        color: #ffa500;
-    }
 
-.requests-list .request-view{
-    color: #22abe4;
-}
-.requests-list .request-complete{
-    color: #02ad51;
-}
-.requests-list .request-remove{
-    color: #ff0000;
-}
-
-/*=== REQUESTS DETAILS ===*/
-.factory-end-row{
-    border-bottom: 2px solid;
-}
-
-/*=== ERROR MESSAGE ===*/
+/*===================================
+ERROR MESSAGE
+====================================*/
 .error-message{
     max-width: 500px;
     margin: auto;
