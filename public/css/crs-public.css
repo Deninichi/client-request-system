@@ -3,6 +3,41 @@
  * included in this file.
  */
 
+
+/*===================================
+GLOBAL
+====================================*/
+.yellow-heading{
+    color: #fcae1b;
+    padding-left: 0px;
+    background-color: transparent;
+    font-size: 30px;
+    text-align: center;
+    font-weight: 400;
+    margin: 0 0 30px;
+}
+
+.crs-page .table-heading,
+#response-details .table-heading,
+#request-details .table-heading{
+    color: #fcae1b;
+    padding-left: 30px;
+    background-color: transparent;
+    font-size: 20px;
+    font-weight: 100;
+}
+.crs-page .heading,
+#response-details .heading,
+#request-details .heading {
+    color: rgba(149, 149, 149, 0.5);
+    margin: 0;
+    font-size: 20px;
+    padding-top: 3px;
+    font-family: Intro;
+    font-weight: 100;
+    white-space: nowrap;
+}
+
 /*===================================
 REQUEST FORM
 ====================================*/
@@ -65,6 +100,50 @@ REQUESTS LIST
 
 
 /*===================================
+MEMBERSHIP HOME
+====================================*/
+.membership-home-content {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 50px;
+    position: relative;
+}
+.membership-home-content #sidebar{
+    background-color: #536476;
+    padding: 10px 30px;
+    border-radius: 5px;
+    margin-top: 30px;
+}
+    .membership-home-content #sidebar ul{
+        margin: 0;
+        padding: 0;
+    }
+        .membership-home-content #sidebar ul li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            padding-bottom: 7px;
+            margin-bottom: 7px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .membership-home-content #sidebar ul li:last-child{
+            border: 0;
+        }
+            .membership-home-content #sidebar ul li a{
+                color: white;
+            }
+            .membership-home-content #sidebar ul li a:hover{
+                opacity: 0.5;
+            }
+@media screen and (max-width: 480px){
+    .membership-home-content {
+        padding: 10px;
+    }
+}
+
+
+/*===================================
 REQUEST/RESPONSE DETAILS
 ====================================*/
 #request-details table.files td{
@@ -103,27 +182,6 @@ REQUEST/RESPONSE DETAILS
 #response-details > .row,
 #request-details > .row {
     margin: 0;
-}
-
-.crs-page .table-heading,
-#response-details .table-heading,
-#request-details .table-heading{
-    color: #fcae1b;
-    padding-left: 30px;
-    background-color: transparent;
-    font-size: 20px;
-    font-weight: 100;
-}
-.crs-page .heading,
-#response-details .heading,
-#request-details .heading {
-    color: rgba(149, 149, 149, 0.5);
-    margin: 0;
-    font-size: 20px;
-    padding-top: 3px;
-    font-family: Intro;
-    font-weight: 100;
-    white-space: nowrap;
 }
 
 #response-details .factory{

@@ -130,6 +130,9 @@ class CRS_Public {
 				}
 
 			}
+		} elseif( 'client-account' == $atts[0] ){
+
+			include dirname(__FILE__) . '/partials/client-account.php';
 
 		} elseif( 'agent-form' == $atts[0] ) {
 
@@ -172,6 +175,13 @@ class CRS_Public {
 				}
 
 				$classes[] = 'respond-quote';
+				$classes[] = 'crs-page';
+
+				break;
+
+			case 'membership-home':
+
+				$classes[] = 'membership-home';
 				$classes[] = 'crs-page';
 
 				break;
