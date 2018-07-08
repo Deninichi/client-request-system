@@ -54,6 +54,7 @@
 				<li><a href="/account/">Account</a></li>
 				<li><a href="/billing-information/">Billing Info</a></li>
 				<li><a href="/invoice/">Invoices</a></li>
+				<li><a href="/quote-request/">Make a Quote Request</a></li>
 			</ul>
 		</div>
 	</div>
