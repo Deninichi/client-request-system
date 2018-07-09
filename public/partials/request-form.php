@@ -14,7 +14,7 @@
             'fields'       => array(),
             'form'               => true,
             'submit_value'      => __("Send Request", $this->plugin_name ),
-            'updated_message'    => __("Done", $this->plugin_name ),
+            'updated_message'    => __("Your Quote Request has been submitted. Please check the email listed above for replies from your Agent. Due to differences in time zone and holiday observances, please allow up to 72 hours for a response. Thank you!", $this->plugin_name ),
         ));
 
     ?>

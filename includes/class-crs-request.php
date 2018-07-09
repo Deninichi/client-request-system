@@ -154,7 +154,6 @@ class CRS_Request {
         // update_field( 'r_order_qty', $_POST['acf']['field_5b2105b331bcb'], $post_id );
         // update_field( 'r_notes_to_agent', $_POST['acf']['field_5b2105e531bcc'], $post_id );
         // update_field( 'r_file_attachment', $_POST['acf']['field_5b2105fd31bcd'], $post_id );
-        // update_field( 'r_notifications', $_POST['acf']['field_5b21061a31bce'], $post_id );
 
         //Update Status
         update_field( 'r_status', 'opened', $post_id );

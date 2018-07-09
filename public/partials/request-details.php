@@ -76,20 +76,15 @@
         <div class="col-12"><?php the_field( 'r_notes_to_agent', $request_id ) ?></div>
     </div>
 
-    <table class="files">
-        <thead>
-            <tr class="title">
-                <th colspan="3"><?php _e( 'Additional Files', 'crs' ) ?></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <?php if ( '' != $file['url'] || null != $file['url'] ): ?>
-                    <td colspan="2"><a href="<?php echo $file['url'] ?>"><?php echo $file['filename'] ?></a></td>
-                <?php else: ?>
-                    <td colspan="2"><?php _e( 'No attached Files', 'crs' ); ?></td>
-                <?php endif; ?>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row files">
+        <h4 class="col-12 table-heading"><?php _e( 'Additional Files', 'crs' ) ?></h4>
+        <div class="col-12">
+            <?php if ( '' != $file['url'] || null != $file['url'] ): ?>
+                <div><a href="<?php echo $file['url'] ?>"><?php echo $file['filename'] ?></a></div>
+            <?php else: ?>
+                <div><?php _e( 'No attached Files', 'crs' ); ?></div>
+            <?php endif; ?>
+        </div>
+    </div>
+
 </div>

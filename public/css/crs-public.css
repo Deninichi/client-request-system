@@ -38,6 +38,21 @@ GLOBAL
     white-space: nowrap;
 }
 
+.amazonsellerclub-form #message{
+    background-color: #f6f6f6;
+    padding-bottom: 20px;
+}
+    .amazonsellerclub-form #message p{
+        max-width: 600px;
+        margin: auto;
+        padding: 10px;
+        text-align: center;
+        border: 3px solid #fcae1b;
+        border-radius: 10px;
+        background-color: white;
+        box-shadow: 0 0 10px #a6a6a6;
+    }
+
 /*===================================
 REQUEST FORM
 ====================================*/
@@ -146,7 +161,7 @@ MEMBERSHIP HOME
 /*===================================
 REQUEST/RESPONSE DETAILS
 ====================================*/
-#request-details table.files td{
+#request-details .files > div >div {
     background-color: #f6f6f6;
     padding: 50px 0;
     text-align: center;
