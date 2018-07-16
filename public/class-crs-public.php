@@ -123,16 +123,20 @@ class CRS_Public {
 
 			} else {
 
-				if( CRS_Client::has_client_limits( get_current_user_id() ) ){
+				//if( CRS_Client::has_client_limits( get_current_user_id() ) ){
 					include dirname(__FILE__) . '/partials/request-form.php';
-				} else {
-					include dirname(__FILE__) . '/partials/error-no-limits.php';
-				}
+				//} else {
+					//include dirname(__FILE__) . '/partials/error-no-limits.php';
+				//}
 
 			}
 		} elseif( 'client-account' == $atts[0] ){
 
-			include dirname(__FILE__) . '/partials/client-account.php';
+			if ( pmpro_hasMembershipLevel( 1 ) || current_user_can( 'manage_options' ) ) {
+				include dirname(__FILE__) . '/partials/client-account.php';
+			} else {
+				include dirname(__FILE__) . '/partials/error-no-access.php';
+			}
 
 		} elseif( 'agent-form' == $atts[0] ) {
 

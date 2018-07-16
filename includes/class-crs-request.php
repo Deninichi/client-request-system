@@ -155,11 +155,12 @@ class CRS_Request {
         // update_field( 'r_notes_to_agent', $_POST['acf']['field_5b2105e531bcc'], $post_id );
         // update_field( 'r_file_attachment', $_POST['acf']['field_5b2105fd31bcd'], $post_id );
 
-        //Update Status
-        update_field( 'r_status', 'opened', $post_id );
 
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
+
+        //Update Status
+        update_field( 'r_status', 'opened', $post_id );
 
         $limit = get_field( 'u_request_limit', 'user_' . get_current_user_id() );
         update_field( 'u_request_limit', $limit - 1, 'user_' . get_current_user_id() );
@@ -214,8 +215,10 @@ class CRS_Request {
         //update_field( 'r_notes_to_client', $_POST['acf']['field_5b22e0574c89a'], $post_id );
 
         //Update Status
-        update_field( 'r_status', 'answered', $post_id );
-
+        if ( isset($_POST['acf']['field_5b22e0e0f041b']) ) {
+            update_field( 'r_status', 'answered', $post_id );
+        }
+        
         // Save the fields to the post
         do_action( 'acf/save_post' , $post_id );
 
