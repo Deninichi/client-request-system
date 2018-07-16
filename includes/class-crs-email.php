@@ -48,10 +48,15 @@ class CRS_Email {
         $client_details = get_field( 'r_customer_info', $request_id );
         $to = $client_details['email'];
 
+        $headers = array(
+            'From: Mandy Payne <mandy@amazonsellersclub.com>',
+            'content-type: text/html',
+        );
+
         switch ( $email_type ) {
             case 'request-quote':
                 $subject = 'You have a quote request from Amazon Sellers Club';
-                //$to = 'info@jingconsulting.com';
+                $to = array( 'cocoliu@vip.163.com', 'raine@amazonsellersclub.com' );
                 break;
 
             case 'request-response':
@@ -64,10 +69,7 @@ class CRS_Email {
         $message = ob_get_contents();
         ob_clean();
 
-        $headers = array(
-            'From: Mandy Payne <mandy@amazonsellersclub.com>',
-            'content-type: text/html',
-        );
+        
 
         wp_mail( $to, $subject, $message, $headers );
 
