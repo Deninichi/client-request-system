@@ -32,6 +32,8 @@ class CRS_Deactivator {
 	public static function deactivate() {
         flush_rewrite_rules();
 
+        remove_role( 'agent' );
+
         wp_clear_scheduled_hook( 'update_clients_limits' );
 	}
 

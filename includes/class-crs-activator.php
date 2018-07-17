@@ -32,6 +32,8 @@ class CRS_Activator {
 	public static function activate() {
         flush_rewrite_rules();
 
+	    add_role( 'agent', 'Agent', array( 'read' => true, 'edit_posts' => true ) );
+
         if (! wp_next_scheduled ( 'update_clients_limits' ) ) {
             wp_schedule_event( strtotime('tomorrow'), 'daily', 'update_clients_limits' );
         }
