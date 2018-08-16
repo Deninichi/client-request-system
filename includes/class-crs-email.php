@@ -56,7 +56,7 @@ class CRS_Email {
         switch ( $email_type ) {
             case 'request-quote':
                 $subject = 'You have a quote request from Amazon Sellers Club';
-                $to = array( 'cocoliu@vip.163.com', 'raine@amazonsellersclub.com' );
+                $to = array( 'cocoliu@vip.163.com', 'raine@amazonsellersclub.com', 'agent@amazonsellersclub.com' );
                 break;
 
             case 'request-response':
